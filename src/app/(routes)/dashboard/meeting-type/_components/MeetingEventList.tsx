@@ -81,6 +81,7 @@ function MeetingEventList() {
       {eventList.length > 0 ? (
         eventList?.map((event, index) => (
           <div
+            key={index}
             className="border shadow-md 
                 border-t-8 rounded-lg p-5 flex flex-col gap-3"
             style={{ borderTopColor: event?.themeColor }}
