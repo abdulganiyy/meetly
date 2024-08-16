@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-function PreviewMeeting({ formValue }) {
+function PreviewMeeting({ formValue }: any) {
   const [date, setDate] = useState(new Date());
-  const [timeSlots, setTimeSlots] = useState();
+  const [timeSlots, setTimeSlots] = useState<any>();
   useEffect(() => {
     formValue?.duration && createTimeSlot(formValue?.duration);
   }, [formValue]);
@@ -16,7 +16,7 @@ function PreviewMeeting({ formValue }) {
    * Used to create timeslot depends on interval
    * @param {*} interval
    */
-  const createTimeSlot = (interval) => {
+  const createTimeSlot = (interval: any) => {
     const startTime = 8 * 60; // 8 AM in minutes
     const endTime = 22 * 60; // 10 PM in minutes
     const totalSlots = (endTime - startTime) / interval;
@@ -67,7 +67,7 @@ function PreviewMeeting({ formValue }) {
             <Calendar
               mode="single"
               selected={date}
-              onSelect={setDate}
+              onSelect={setDate as any}
               className="rounded-md border mt-5"
               disabled={(date) => date <= new Date()}
             />
@@ -76,7 +76,7 @@ function PreviewMeeting({ formValue }) {
             className="flex flex-col w-full overflow-auto gap-4 p-5"
             style={{ maxHeight: "400px" }}
           >
-            {timeSlots?.map((time, index) => (
+            {timeSlots?.map((time: any, index: any) => (
               <Button
                 key={index}
                 className="border-primary

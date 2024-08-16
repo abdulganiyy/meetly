@@ -10,14 +10,16 @@ function TimeDateSelection({
   enableTimeSlot,
   selectedTime,
   prevBooking,
-}) {
+}: any) {
   /**
    * Used to check timeslot whether its already booked or not
    * @param {*} time
    * @returns Boolean
    */
-  const checkTimeSlot = (time) => {
-    return prevBooking.filter((item) => item.selectedTime == time).length > 0;
+  const checkTimeSlot = (time: any) => {
+    return (
+      prevBooking.filter((item: any) => item.selectedTime == time).length > 0
+    );
   };
   return (
     <div className="md:col-span-2 flex px-4">
@@ -35,7 +37,7 @@ function TimeDateSelection({
         className="flex flex-col w-full overflow-auto gap-4 p-5"
         style={{ maxHeight: "400px" }}
       >
-        {timeSlots?.map((time, index) => (
+        {timeSlots?.map((time: any, index: any) => (
           <Button
             key={index}
             disabled={!enableTimeSlot || checkTimeSlot(time)}

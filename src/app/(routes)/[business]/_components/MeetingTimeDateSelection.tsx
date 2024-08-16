@@ -24,13 +24,13 @@ import { render } from "@react-email/render";
 import Email from "@/emails";
 function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
   const [date, setDate] = useState(new Date());
-  const [timeSlots, setTimeSlots] = useState();
+  const [timeSlots, setTimeSlots] = useState<any>();
   const [enableTimeSlot, setEnabledTimeSlot] = useState(false);
   const [selectedTime, setSelectedTime] = useState();
   const [userName, setUserName] = useState();
-  const [userEmail, setUserEmail] = useState();
+  const [userEmail, setUserEmail] = useState("");
   const [userNote, setUserNote] = useState("");
-  const [prevBooking, setPrevBooking] = useState([]);
+  const [prevBooking, setPrevBooking] = useState<any>([]);
   const [step, setStep] = useState(1);
   const router = useRouter();
   const db = getFirestore(app);
@@ -39,7 +39,7 @@ function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
   useEffect(() => {
     eventInfo?.duration && createTimeSlot(eventInfo?.duration);
   }, [eventInfo]);
-  const createTimeSlot = (interval) => {
+  const createTimeSlot = (interval: any) => {
     const startTime = 8 * 60; // 8 AM in minutes
     const endTime = 22 * 60; // 10 PM in minutes
     const totalSlots = (endTime - startTime) / interval;
@@ -62,7 +62,7 @@ function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
    * On Date Change Handle Method
    * @param {*} date
    */
-  const handleDateChange = (date) => {
+  const handleDateChange = (date: any) => {
     setDate(date);
     const day = format(date, "EEEE");
     if (businessInfo?.daysAvailable?.[day]) {
@@ -109,7 +109,7 @@ function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
    * Used to Send an email to User
    * @param {*} user
    */
-  const sendEmail = (user) => {
+  const sendEmail = (user: any) => {
     const emailHtml = render(
       <Email
         businessName={businessInfo?.businessName}
@@ -127,7 +127,7 @@ function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
         subject: "Meeting Schedul Details",
         body: emailHtml,
       })
-      .then((resp) => {
+      .then((resp: any) => {
         console.log(resp);
         setLoading(false);
         router.replace("/confirmation");
@@ -138,7 +138,7 @@ function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
    * Used to Fetch Previous Booking for given event
    * @param {*} date_
    */
-  const getPrevEventBooking = async (date_) => {
+  const getPrevEventBooking = async (date_: any) => {
     const q = query(
       collection(db, "ScheduledMeetings"),
       where("selectedDate", "==", date_),
@@ -149,7 +149,7 @@ function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
 
     querySnapshot.forEach((doc) => {
       console.log("--", doc.data());
-      setPrevBooking((prev) => [...prev, doc.data()]);
+      setPrevBooking((prev: any) => [...prev, doc.data()]);
     });
   };
   return (
