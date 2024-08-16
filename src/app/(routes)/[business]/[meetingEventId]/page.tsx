@@ -14,8 +14,8 @@ import { app } from "@/config/firebaseConfig";
 
 function SharedMeetingEvent({ params }: any) {
   const db = getFirestore(app);
-  const [businessInfo, setBusinesInfo] = useState();
-  const [eventInfo, setEventInfo] = useState();
+  const [businessInfo, setBusinesInfo] = useState<any>();
+  const [eventInfo, setEventInfo] = useState<any>();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     params && getMeetingBusinessAndEventDetails();
