@@ -22,7 +22,7 @@ import { useRouter } from "next/navigation";
 import Plunk from "@plunk/node";
 import { render } from "@react-email/render";
 import Email from "@/emails";
-function MeetingTimeDateSelection({ eventInfo, businessInfo }) {
+function MeetingTimeDateSelection({ eventInfo, businessInfo }: any) {
   const [date, setDate] = useState(new Date());
   const [timeSlots, setTimeSlots] = useState();
   const [enableTimeSlot, setEnabledTimeSlot] = useState(false);
