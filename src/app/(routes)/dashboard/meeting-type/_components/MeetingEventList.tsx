@@ -63,7 +63,7 @@ function MeetingEventList() {
     });
   };
 
-  const onCopyClickHandler = (event) => {
+  const onCopyClickHandler = (even: any) => {
     const meetingEventUrl =
       process.env.NEXT_PUBLIC_BASE_URL +
       "/" +
