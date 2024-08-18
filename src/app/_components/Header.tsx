@@ -13,7 +13,7 @@ function Header() {
         "
       >
         <Image
-          src="/MEETLY.PNg"
+          src="/MEETLY.png"
           width={100}
           height={100}
           alt="logo"
