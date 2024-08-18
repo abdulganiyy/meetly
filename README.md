@@ -65,7 +65,7 @@ This Scheduling Appointment Application is designed to help users easily book, m
 
 ## Technologies Used
 
-- **Frontend**: React.js, HTML5, CSS3, Bootstrap
+- **Frontend**: ReactJS, NextJS, HTML5, CSS3, Tailwindcss
 - **Backend**: Firebase
 - **Database**: Firestore
 - **Authentication**: Kinde
